@@ -50,48 +50,58 @@ class ProductCard extends StatelessWidget {
                 ),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 8.0),
-                    child: Text(
-                      product.name,
-                      style: Theme.of(context).textTheme.bodyLarge,
-                    ),
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      RichText(
-                        text: TextSpan(
-                          children: [
-                            TextSpan(
-                                text: "\$${product.price}",
-                                style: Theme.of(context).textTheme.bodyLarge),
-                            TextSpan(
-                                text: "/${product.unit}",
-                                style: Theme.of(context).textTheme.bodySmall),
-                          ],
-                        ),
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 4.0),
+                      child: Text(
+                        product.name,
+                        style: Theme.of(context).textTheme.bodyLarge,
+                        overflow: TextOverflow.ellipsis,
+                        maxLines: 1,
                       ),
-                      SizedBox(
-                        width: 30,
-                        height: 30,
-                        child: IconButton.filled(
-                          padding: EdgeInsets.zero,
-                          onPressed: () {},
-                          iconSize: 18,
-                          icon: const Icon(Icons.add),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Flexible(
+                          child: RichText(
+                            text: TextSpan(
+                              children: [
+                                TextSpan(
+                                  text: "\$${product.price}",
+                                  style: Theme.of(context).textTheme.bodyLarge,
+                                ),
+                                TextSpan(
+                                  text: "/${product.unit}",
+                                  style: Theme.of(context).textTheme.bodySmall,
+                                ),
+                              ],
+                            ),
+                            overflow: TextOverflow.ellipsis,
+                            maxLines: 1,
+                          ),
                         ),
-                      )
-                    ],
-                  )
-                ],
+                        SizedBox(
+                          width: 30,
+                          height: 30,
+                          child: IconButton.filled(
+                            padding: EdgeInsets.zero,
+                            onPressed: () {},
+                            iconSize: 18,
+                            icon: const Icon(Icons.add),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
-            )
+            ),
           ],
         ),
       ),
